@@ -22,7 +22,7 @@ const Home = (props) => {
 
   const getNews = () => {
     fetch(
-      `https://newsapi.org/v2/everything?q=${
+      `http://newsapi.org/v2/everything?q=${
         props.menu ? props.menu : "All"
       }&sortBy=popularity&apiKey=81583e4d27624c989dcb068b2660ac68`
     )
