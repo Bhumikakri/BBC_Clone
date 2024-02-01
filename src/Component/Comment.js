@@ -13,7 +13,6 @@ const Comment = (props) => {
   const addComment = async () => {
     const newsDoc = doc(database, "News", `${props.url.substr(-10, 10)}`);
     const commentRef = collection(newsDoc, "Comments");
-    // auth.currentUser == null && toast.warning("Please login");
     if(auth.currentUser == null){
         toast.warning("Please login"); 
     }else{

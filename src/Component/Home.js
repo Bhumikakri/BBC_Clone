@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { doc, setDoc } from "firebase/firestore";
 import { database } from "../Firebase/FirebaseSetup";
+import errorImg from '../Imges/errorImg.png';
 
 const Home = (props) => {
   const [news, setNews] = useState([]);
@@ -24,10 +25,11 @@ const Home = (props) => {
     fetch(
       `https://newsapi.org/v2/everything?q=${
         props.menu ? props.menu : "All"
-      }&sortBy=popularity&apiKey=81583e4d27624c989dcb068b2660ac68`
+      }&sortBy=popularity&apiKey=e1f0a85628084a60bcc40ea8ec2c2a53`
     )
       .then((res) => res.json())
-      .then((json) => setNews(json.articles));
+      .then((json) => setNews(json.articles))
+      .catch((error) => console.error('Error fetching news:', error));
   };
 
   useEffect(() => {
@@ -48,7 +50,7 @@ const Home = (props) => {
                 >
                   <img
                     class="w-full"
-                    src={items.urlToImage}
+                    src={items.urlToImage?items.urlToImage:errorImg}
                     alt={items.Title}
                   />
                   <div class="px-6 py-4">

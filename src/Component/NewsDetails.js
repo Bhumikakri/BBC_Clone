@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import Comment from './Comment';
+import errorImg from '../Imges/errorImg.png';
 
 const NewsDetails=()=>{
     const location = useLocation();
@@ -10,7 +11,7 @@ const NewsDetails=()=>{
             <div className='p-5'>
                 <h1 className=' text-3xl font-extrabold'>{location.state.items.title}</h1>
                 <h4 className=' text-xl font-normal'>{location.state.items.description}</h4>
-                <img src={location.state.items.urlToImage} />
+                <img src={location.state.items.urlToImage? location.state.items.urlToImage :errorImg} />
             </div>
             <div>
                 <Comment url={location.state.items.url} />
